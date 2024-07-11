@@ -1,4 +1,7 @@
 
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Shipping.API
 {
     public class Program
@@ -13,7 +16,10 @@ namespace Shipping.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddDbContext<ShippingDbContext>(option =>
+            {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDb"));
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
