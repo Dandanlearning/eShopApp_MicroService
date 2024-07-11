@@ -16,5 +16,6 @@ namespace Infrastructure.Data
         }
         public DbSet<Shipper> Shippers { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<ShipperRegion> ShipperRegions { get; set; }
     }
 }
