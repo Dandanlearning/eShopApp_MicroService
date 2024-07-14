@@ -26,6 +26,7 @@ namespace Shipping.API
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDb"));
             });
+            builder.Services.AddAutoMapper(typeof(Program));
             var app = builder.Build();
 
  
