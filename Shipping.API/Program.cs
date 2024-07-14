@@ -1,5 +1,9 @@
 
+using ApplicationCore.Interfaces.Repository;
+using ApplicationCore.Interfaces.Service;
 using Infrastructure.Data;
+using Infrastructure.Repository;
+using Infrastructure.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Shipping.API
@@ -16,6 +20,8 @@ namespace Shipping.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
+            builder.Services.AddScoped<IShipperService, ShipperService>();
             builder.Services.AddDbContext<ShippingDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDb"));
